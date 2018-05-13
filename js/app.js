@@ -1,3 +1,16 @@
+let enemyYStartingPositions = [53, 136, 219];
+
+// Generate a random starting position for an enemy
+var getRandomStartingPosition = function() {
+    let x = -101;
+    let y = enemyYStartingPositions[Math.floor(Math.random() * enemyYStartingPositions.length)];
+
+    return {
+      x: x,
+      y: y
+    };
+}
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -6,6 +19,9 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    let startingPosition = getRandomStartingPosition();
+    this.x = startingPosition.x;
+    this.y = startingPosition.y;
 };
 
 // Update the enemy's position, required method for game
@@ -69,6 +85,12 @@ Player.prototype.handleInput = function(keypress) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+let allEnemies = [];
+for (var i = 0; i < 4; i++) {
+    var enemy = new Enemy();
+    allEnemies.push(enemy);
+}
+
 let player = new Player();
 
 
