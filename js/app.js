@@ -31,7 +31,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x += (this.speed * dt);
+
+    // Reset the enemy position if outside the board
+    if (this.x <= 505) {
+      this.x += (this.speed * dt);
+    }
+    else {
+      this.x = -101;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
