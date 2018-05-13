@@ -54,12 +54,21 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 385;
+    this.hasCollided = false;
 }
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+// Reset the player position, if they've collided with the enemy
+Player.prototype.update = function() {
+  if (player.hasCollided) {
+    this.x = 202;
+    this.y = 385;
+    player.hasCollided = false;
+  }
+}
 
 Player.prototype.handleInput = function(keypress) {
 

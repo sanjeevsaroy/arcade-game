@@ -86,6 +86,7 @@ var Engine = (function(global) {
       allEnemies.forEach(function(enemy) {
           if (enemy.y === player.y && enemy.x - player.x < 75 && enemy.x - player.x > -75) {
             console.log("COLLISION!");
+            player.hasCollided = true;
           }
       });
     }
@@ -101,7 +102,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        // player.update();
+        player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -170,6 +171,8 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        this.x = 202;
+        this.y = 385;
     }
 
     /* Go ahead and load all of the images we know we're going to need to
