@@ -35,28 +35,33 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+
 Player.prototype.handleInput = function(keypress) {
 
     switch (keypress) {
 
       case 'left':
-        this.x -= 101;
+        if (this.x !== 0) {
+          this.x -= 101;
+        }
         break;
 
       case 'up':
-        this.y -= 83;
+        if (this.y !== -30) {
+          this.y -= 83;
+        }
         break;
 
       case 'right':
-        this.x += 101;
+        if (this.x !== 404) {
+          this.x += 101;
+        }
         break;
 
       case 'down':
-        this.y += 83;
-        break;
-
-      default:
-        // do nothing
+        if (this.y !== 385) {
+          this.y += 83;
+        }
         break;
     }
 };
