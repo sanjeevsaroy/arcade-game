@@ -61,12 +61,19 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// Reset the player position, if they've collided with the enemy
 Player.prototype.update = function() {
+  // Reset the player position if they've collided with the enemy
   if (player.hasCollided) {
     this.x = 202;
     this.y = 385;
     player.hasCollided = false;
+  }
+
+  // If the player has reached the water, they've won
+  if (player.y === -30) {
+    console.log("You've won!");
+    this.x = 202;
+    this.y = 385;
   }
 }
 
