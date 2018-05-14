@@ -27,7 +27,7 @@ $('.character').click(function() {
 * Game Board
 *
 */
-let score = 0;
+let wins = 0;
 let enemyYStartingPositions = [53, 136, 219];
 
 // Generate a random starting position for an enemy
@@ -95,8 +95,8 @@ Player.prototype.update = function() {
   // Reset the player position if they've collided with the enemy
   if (player.hasCollided) {
 
-    // Reset the score
-    setScore(0);
+    // Reset the wins
+    setWins(0);
 
     // Reset the player position
     this.x = 202;
@@ -108,8 +108,8 @@ Player.prototype.update = function() {
   if (player.y === -30) {
     console.log("You've won!");
 
-    // Increment the score
-    setScore(++score);
+    // Increment the wins
+    setWins(++wins);
 
     // Reset the player position
     this.x = 202;
@@ -117,10 +117,10 @@ Player.prototype.update = function() {
   }
 }
 
-// Set the score of the game
-var setScore = function(num) {
-  score = num;
-  $('.score').text(score);
+// Set the wins of the game
+var setWins = function(num) {
+  wins = num;
+  $('.wins').text(wins);
 }
 
 Player.prototype.handleInput = function(keypress) {
