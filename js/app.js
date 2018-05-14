@@ -28,12 +28,13 @@ $('.character').click(function() {
 *
 */
 let wins = 0;
-let enemyYStartingPositions = [53, 136, 219];
+let yStartingPositions = [53, 136, 219];
+let xStartingPositions = [0, 101, 202, 303, 404];
 
 // Generate a random starting position for an enemy
 var getRandomStartingPosition = function() {
     let x = -101;
-    let y = enemyYStartingPositions[Math.floor(Math.random() * enemyYStartingPositions.length)];
+    let y = yStartingPositions[Math.floor(Math.random() * yStartingPositions.length)];
 
     return {
       x: x,
@@ -94,7 +95,6 @@ Player.prototype.render = function() {
 Player.prototype.update = function() {
   // Reset the player position if they've collided with the enemy
   if (player.hasCollided) {
-
     // Reset the wins
     setWins(0);
 
@@ -153,6 +153,29 @@ Player.prototype.handleInput = function(keypress) {
     }
 };
 
+// Gems that the user can collect
+var Gem = function() {
+    this.sprite = 'images/Gem Orange.png'
+    this.setRandomPosition();
+}
+
+// Move the gem to a random position
+Gem.prototype.setRandomPosition = function() {
+    this.x = xStartingPositions[Math.floor(Math.random() * xStartingPositions.length)];
+    this.y = yStartingPositions[Math.floor(Math.random() * yStartingPositions.length)];
+}
+
+Gem.prototype.update = function() {
+    // Remove the gem if the player collides with it
+    if (player.x === gem.x && player.y === gem.y) {
+      gem.setRandomPosition();
+    }
+}
+
+Gem.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -163,6 +186,7 @@ for (var i = 0; i < 4; i++) {
 }
 
 let player = new Player();
+let gem = new Gem();
 
 
 // This listens for key presses and sends the keys to your
