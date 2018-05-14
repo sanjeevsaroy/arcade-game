@@ -28,6 +28,7 @@ $('.character').click(function() {
 *
 */
 let wins = 0;
+let gems = 0;
 let yStartingPositions = [53, 136, 219];
 let xStartingPositions = [0, 101, 202, 303, 404];
 
@@ -97,6 +98,7 @@ Player.prototype.update = function() {
   if (player.hasCollided) {
     // Reset the wins
     setWins(0);
+    setGems(0);
 
     // Reset the player position
     this.x = 202;
@@ -121,6 +123,12 @@ Player.prototype.update = function() {
 var setWins = function(num) {
   wins = num;
   $('.wins').text(wins);
+}
+
+// Set the gems collected
+var setGems = function(num) {
+  gems = num;
+  $('.gems').text(gems);
 }
 
 Player.prototype.handleInput = function(keypress) {
@@ -168,6 +176,7 @@ Gem.prototype.setRandomPosition = function() {
 Gem.prototype.update = function() {
     // Remove the gem if the player collides with it
     if (player.x === gem.x && player.y === gem.y) {
+      setGems(++gems);
       gem.setRandomPosition();
     }
 }
