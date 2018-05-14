@@ -1,3 +1,33 @@
+/*
+*
+* Character Selection
+*
+*/
+let selectedCharacter = $('.character.selected');
+
+// Allow the player to select their desired character
+$('.character').click(function() {
+    var elem = $(this);
+
+    if (!elem.hasClass('selected')) {
+      // Change the selected character
+      selectedCharacter.removeClass('selected');
+      elem.addClass('selected');
+
+      // Load the new character image
+      selectedCharacter = elem;
+      var resource = elem.attr('src');
+      player.sprite = resource;
+    }
+});
+
+
+/*
+*
+* Game Board
+*
+*/
+
 let enemyYStartingPositions = [53, 136, 219];
 
 // Generate a random starting position for an enemy
@@ -9,7 +39,7 @@ var getRandomStartingPosition = function() {
       x: x,
       y: y
     };
-}
+};
 
 // Enemies our player must avoid
 var Enemy = function() {
