@@ -27,7 +27,7 @@ $('.character').click(function() {
 * Game Board
 *
 */
-
+let score = 0;
 let enemyYStartingPositions = [53, 136, 219];
 
 // Generate a random starting position for an enemy
@@ -94,6 +94,11 @@ Player.prototype.render = function() {
 Player.prototype.update = function() {
   // Reset the player position if they've collided with the enemy
   if (player.hasCollided) {
+
+    // Reset the score
+    setScore(0);
+
+    // Reset the player position
     this.x = 202;
     this.y = 385;
     player.hasCollided = false;
@@ -102,9 +107,20 @@ Player.prototype.update = function() {
   // If the player has reached the water, they've won
   if (player.y === -30) {
     console.log("You've won!");
+
+    // Increment the score
+    setScore(++score);
+
+    // Reset the player position
     this.x = 202;
     this.y = 385;
   }
+}
+
+// Set the score of the game
+var setScore = function(num) {
+  score = num;
+  $('.score').text(score);
 }
 
 Player.prototype.handleInput = function(keypress) {
