@@ -27,31 +27,24 @@ $('.character').click(function() {
 * Game Board
 *
 */
-let yStartingPositions = [53, 136, 219];
 let xStartingPositions = [0, 101, 202, 303, 404];
+let yStartingPositions = [53, 136, 219];
 
-// Generate a random starting position for an enemy
-var getRandomStartingPosition = function() {
-    let x = -101;
-    let y = yStartingPositions[Math.floor(Math.random() * yStartingPositions.length)];
-
-    return {
-      x: x,
-      y: y
-    };
+// Generate a random position on the y-axis for an enemy
+var getRandomYPosition = function() {
+    return yStartingPositions[Math.floor(Math.random() * yStartingPositions.length)];
 };
 
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(yPosition) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    let startingPosition = getRandomStartingPosition();
-    this.x = startingPosition.x;
-    this.y = startingPosition.y;
+    this.x = -101;
+    this.y = (yPosition !== undefined) ? yPosition : getRandomYPosition();
     this.speed = getRandomSpeed();
 };
 
@@ -223,10 +216,13 @@ var setGems = function(num) {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
+// Assign the first 3 enemies to each row on the board, then randomise
 // Place the player object in a variable called player
+// Place the gem object in a variable called gem
 let allEnemies = [];
-for (var i = 0; i < 4; i++) {
-    var enemy = new Enemy();
+for (var i = 0; i < 5; i++) {
+    var yPosition = (i < yStartingPositions.length) ? yStartingPositions[i] : getRandomYPosition();
+    var enemy = new Enemy(yPosition);
     allEnemies.push(enemy);
 }
 
