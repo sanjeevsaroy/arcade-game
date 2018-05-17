@@ -81,7 +81,7 @@ var Engine = (function(global) {
     function checkCollisions() {
       allEnemies.forEach(function(enemy) {
           if (enemy.y === player.y && enemy.x - player.x < 75 && enemy.x - player.x > -75) {
-            console.log("COLLISION!");
+            console.log("Collision!");
             player.hasCollided = true;
           }
       });

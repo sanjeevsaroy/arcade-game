@@ -92,13 +92,11 @@ Player.prototype.render = function() {
 }
 
 Player.prototype.update = function() {
-  // Reset the player position if they've collided with the enemy
+  // Reset the scores and the player position if they've collided with the enemy
   if (player.hasCollided) {
-    // Reset the wins
     setWins(0);
     setGems(0);
 
-    // Reset the player position
     this.x = 202;
     this.y = 385;
     player.hasCollided = false;
@@ -108,15 +106,14 @@ Player.prototype.update = function() {
   if (player.y === -30) {
     console.log("You've won!");
 
-    // Increment the wins
     setWins(++currentWins);
 
-    // Reset the player position
     this.x = 202;
     this.y = 385;
   }
 }
 
+// Carry out the input if the character won't go off the board
 Player.prototype.handleInput = function(keypress) {
 
     switch (keypress) {
@@ -147,20 +144,20 @@ Player.prototype.handleInput = function(keypress) {
     }
 };
 
-// Gems that the user can collect
+// A Gem class that the user can collect as an additional challenge
 var Gem = function() {
     this.sprite = 'images/Gem Orange.png'
     this.setRandomPosition();
 }
 
-// Move the gem to a random position
+// Position the gem anywhere on the board
 Gem.prototype.setRandomPosition = function() {
     this.x = xStartingPositions[Math.floor(Math.random() * xStartingPositions.length)];
     this.y = yStartingPositions[Math.floor(Math.random() * yStartingPositions.length)];
 }
 
+// If collected, move to a new random position
 Gem.prototype.update = function() {
-    // Remove the gem if the player collides with it
     if (player.x === gem.x && player.y === gem.y) {
       setGems(++currentGems);
       gem.setRandomPosition();
@@ -199,6 +196,7 @@ var setWins = function(num) {
   currentWins = num;
   $('.current-wins').text(currentWins);
 
+  // Set a new high score if beaten
   if (currentWins > totalWins) {
     totalWins = currentWins;
     $('.highest-wins').text(totalWins);
@@ -210,6 +208,7 @@ var setGems = function(num) {
   currentGems = num;
   $('.current-gems').text(currentGems);
 
+  // Set a new high score if beaten
   if (currentGems > totalGems) {
     totalGems = currentGems;
     $('.highest-gems').text(totalGems);
