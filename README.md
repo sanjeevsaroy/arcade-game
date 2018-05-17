@@ -27,7 +27,7 @@ On the board, there is water on one end of the board. You start off on the other
 ![Water](https://github.com/saroyy/arcade-game/blob/master/images/water-block.png)
 
 
-Oh, I forgot to add that there's enemies lurking around to stop you! Touch one of these bad-boys and your wins will reset :(
+Oh, I forgot to add that there are enemies lurking around to stop you! Touch one of these bad-boys and your wins will reset :(
 
 ![Enemy](https://github.com/saroyy/arcade-game/blob/master/images/enemy-bug.png)
 
@@ -54,6 +54,13 @@ Just click on the desired character and it'll instantly change for you.
 **Will changing character affect the game?**
 
 Nope! You can change your character whenever you feel like it.
+
+**Where are the gems positioned?**
+
+They are placed in a random position on the board.
+
+**What happens if I collect a gem?**
+It'll disappear and a new one will appear in another random position!
 
 ## Contribution
 
