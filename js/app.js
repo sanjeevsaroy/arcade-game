@@ -27,8 +27,10 @@ $('.character').click(function() {
 * Game Board
 *
 */
-let wins = 0;
-let gems = 0;
+let currentWins = 0;
+let currentGems = 0;
+let totalWins = 0;
+let totalGems = 0;
 let yStartingPositions = [53, 136, 219];
 let xStartingPositions = [0, 101, 202, 303, 404];
 
@@ -111,7 +113,7 @@ Player.prototype.update = function() {
     console.log("You've won!");
 
     // Increment the wins
-    setWins(++wins);
+    setWins(++currentWins);
 
     // Reset the player position
     this.x = 202;
@@ -121,14 +123,24 @@ Player.prototype.update = function() {
 
 // Set the wins of the game
 var setWins = function(num) {
-  wins = num;
-  $('.wins').text(wins);
+  currentWins = num;
+  $('.current-wins').text(currentWins);
+
+  if (currentWins > totalWins) {
+    totalWins = currentWins;
+    $('.highest-wins').text(totalWins);
+  }
 }
 
 // Set the gems collected
 var setGems = function(num) {
-  gems = num;
-  $('.gems').text(gems);
+  currentGems = num;
+  $('.current-gems').text(currentGems);
+
+  if (currentGems > totalGems) {
+    totalGems = currentGems;
+    $('.highest-gems').text(totalGems);
+  }
 }
 
 Player.prototype.handleInput = function(keypress) {
@@ -176,7 +188,7 @@ Gem.prototype.setRandomPosition = function() {
 Gem.prototype.update = function() {
     // Remove the gem if the player collides with it
     if (player.x === gem.x && player.y === gem.y) {
-      setGems(++gems);
+      setGems(++currentGems);
       gem.setRandomPosition();
     }
 }
