@@ -27,10 +27,6 @@ $('.character').click(function() {
 * Game Board
 *
 */
-let currentWins = 0;
-let currentGems = 0;
-let totalWins = 0;
-let totalGems = 0;
 let yStartingPositions = [53, 136, 219];
 let xStartingPositions = [0, 101, 202, 303, 404];
 
@@ -121,28 +117,6 @@ Player.prototype.update = function() {
   }
 }
 
-// Set the wins of the game
-var setWins = function(num) {
-  currentWins = num;
-  $('.current-wins').text(currentWins);
-
-  if (currentWins > totalWins) {
-    totalWins = currentWins;
-    $('.highest-wins').text(totalWins);
-  }
-}
-
-// Set the gems collected
-var setGems = function(num) {
-  currentGems = num;
-  $('.current-gems').text(currentGems);
-
-  if (currentGems > totalGems) {
-    totalGems = currentGems;
-    $('.highest-gems').text(totalGems);
-  }
-}
-
 Player.prototype.handleInput = function(keypress) {
 
     switch (keypress) {
@@ -197,19 +171,6 @@ Gem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-let allEnemies = [];
-for (var i = 0; i < 4; i++) {
-    var enemy = new Enemy();
-    allEnemies.push(enemy);
-}
-
-let player = new Player();
-let gem = new Gem();
-
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -222,3 +183,47 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+/*
+*
+* Game Scores
+*
+*/
+let currentWins = 0;
+let currentGems = 0;
+let totalWins = 0;
+let totalGems = 0;
+
+// Set the wins of the game
+var setWins = function(num) {
+  currentWins = num;
+  $('.current-wins').text(currentWins);
+
+  if (currentWins > totalWins) {
+    totalWins = currentWins;
+    $('.highest-wins').text(totalWins);
+  }
+}
+
+// Set the gems collected
+var setGems = function(num) {
+  currentGems = num;
+  $('.current-gems').text(currentGems);
+
+  if (currentGems > totalGems) {
+    totalGems = currentGems;
+    $('.highest-gems').text(totalGems);
+  }
+}
+
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
+let allEnemies = [];
+for (var i = 0; i < 4; i++) {
+    var enemy = new Enemy();
+    allEnemies.push(enemy);
+}
+
+let player = new Player();
+let gem = new Gem();
