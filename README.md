@@ -18,9 +18,16 @@ To get started, first download the repository, open `index.html` and the game wi
 
 ## How To Play
 
-On the board, there is water on one end of the board. You start off on the other side. The objective of them game is to reach the water as many times as you can. Sounds easy, right?
+On the board, there is water on one end of the board. You start off on the other side. The objective of the game is to reach the water as many times as you can. Each time you reach the water, your character will go back to the begin and your wins will go up! Sounds easy, right?
 
-Oh I forgot to add that there's enemies lurking around to stop you! Touch one of these bad-boys and your wins will reset :(
+![Water](https://github.com/saroyy/arcade-game/blob/master/images/water-block.png)
+![Water](https://github.com/saroyy/arcade-game/blob/master/images/water-block.png)
+![Water](https://github.com/saroyy/arcade-game/blob/master/images/water-block.png)
+![Water](https://github.com/saroyy/arcade-game/blob/master/images/water-block.png)
+![Water](https://github.com/saroyy/arcade-game/blob/master/images/water-block.png)
+
+
+Oh, I forgot to add that there's enemies lurking around to stop you! Touch one of these bad-boys and your wins will reset :(
 
 ![Enemy](https://github.com/saroyy/arcade-game/blob/master/images/enemy-bug.png)
 
@@ -31,12 +38,12 @@ You also get to choose your own character, so feel free to pick your favourite o
 ![Boy](https://github.com/saroyy/arcade-game/blob/master/images/char-boy.png)
 ![Cat Girl](https://github.com/saroyy/arcade-game/blob/master/images/char-cat-girl.png)
 ![Horn Girl](https://github.com/saroyy/arcade-game/blob/master/images/char-horn-girl.png)
-![Pink Girl](https://github.com/saroyy/arcade-game/blob/master/images/char-pink-hirl.png)
+![Pink Girl](https://github.com/saroyy/arcade-game/blob/master/images/char-pink-girl.png)
 ![Princess Girl](https://github.com/saroyy/arcade-game/blob/master/images/char-princess-girl.png)
 
 If you're getting too comfortable with the game, why not try the extra challenge of collecting these awesome gems?! See how many you can collect without running into the enemy ;)
 
-![Gem](https://github.com/saroyy/arcade-game/blob/master/images/Gem Orange.png)
+![Gem](https://github.com/saroyy/arcade-game/blob/master/images/Gem%20Orange.png)
 
 ## FAQ
 
