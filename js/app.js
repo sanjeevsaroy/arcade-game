@@ -52,8 +52,13 @@ var Enemy = function() {
     let startingPosition = getRandomStartingPosition();
     this.x = startingPosition.x;
     this.y = startingPosition.y;
-    this.speed = Math.floor(Math.random() * 500) + 100;
+    this.speed = getRandomSpeed();
 };
+
+// Generate a random number for the enemy's speed
+var getRandomSpeed = function() {
+    return Math.floor(Math.random() * 500) + 100;
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -62,12 +67,13 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    // Reset the enemy position if outside the board
-    if (this.x <= 505) {
+    // Reset the enemy position if outside the board ans assign new speed
+    if (this.x <= 707) {
       this.x += (this.speed * dt);
     }
     else {
       this.x = -101;
+      this.speed = getRandomSpeed();
     }
 };
 
