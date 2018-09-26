@@ -60,6 +60,7 @@ Nope! You can change your character whenever you feel like it.
 They are placed in a random position on the board.
 
 **What happens if I collect a gem?**
+
 It'll disappear and a new one will appear in another random position!
 
 ## Contribution

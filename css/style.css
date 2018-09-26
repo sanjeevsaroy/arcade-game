@@ -5,3 +5,9 @@ body {
 #character-select .selected {
   box-shadow: 0 0 10px #000;
 }
+
+.github-link {
+  position: fixed;
+  top: 50px;
+  right: 100px;
+}
